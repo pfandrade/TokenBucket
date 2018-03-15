@@ -21,7 +21,7 @@ if bucket.tryConsume(1, until: Date().addingTimeInterval(0.1))) {
 
 ```
 
-There's also a handy utility method simply called ```consume()``` that will wait indefinetly for the desired tokens to become available.
+There's also a handy utility method simply called ```consume()``` that will wait indefinitely for the desired tokens to become available.
 
 ```swift
 bucket.consume(1)
