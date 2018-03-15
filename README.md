@@ -6,7 +6,8 @@ This implementation simply uses an NSCondition to manage concurrency. There are 
 
 ## Usage
 
-To 
+To use it, create a bucket with the desired parameter for capacity, the number of tokens per interval and the replishing time interval.
+Then you just have to consume tokens from the bucket before starting your rate-limited work/event.
 
 ```swift
 // create a bucket
