@@ -63,16 +63,18 @@ public class TokenBucket: NSObject {
     }
     
     private func wait(until limitDate: Date, for tokens: Int) -> Bool {
+        replenish()
+        
         condition.lock()
         defer {
             condition.unlock()
         }
         while _tokenCount < tokens {
-            DispatchQueue.global().async {
-                self.replenish()
-            }
             if limitDate < Date() {
                 return false
+            }
+            DispatchQueue.global().async {
+                self.replenish()
             }
             condition.wait(until: Date().addingTimeInterval(0.2))
         }
